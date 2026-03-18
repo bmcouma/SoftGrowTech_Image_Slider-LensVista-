@@ -25,7 +25,10 @@ A truly premium addition: a CSS grid showcasing stunning, auto-playing, muted HT
 ### 5. Infinity Marquee & Live Quotes
 A seamless, pure-CSS continuous tracking slider highlights traveler testimonials from around the globe, seamlessly combined with live-injected inspiration from the **DummyJSON Quote API**.
 
-### 6. Fully Responsive & Accessible
+### 6. Interactive Contact Suite
+A professional, validated contact form featuring name, email, and message inputs, integrated with a JavaScript success feedback system and a floating WhatsApp call-to-action for immediate consultation.
+
+### 7. Fully Responsive & Accessible
 Meticulously styled using semantic HTML, ARIA attributes, modern CSS Grid/Flexbox architecture, and smart Intersection Observers for beautiful scroll-reveal load animations across all device sizes.
 
 ---
