@@ -1102,25 +1102,52 @@ button {
   margin: 0 auto;
 }
 
-.subscribe-form input {
-  flex: 1;
-  background: rgba(255,255,255,0.05);
+/* ---------- SIGNUP / CONTACT FORM ---------- */
+
+.signup-form {
+  max-width: 540px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--clr-border);
-  border-radius: var(--radius-pill);
-  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.2rem;
   font-family: var(--ff-ui);
-  font-size: 0.9rem;
-  color: var(--clr-text);
+  font-size: 0.95rem;
+  color: var(--clr-white);
   outline: none;
-  transition: border-color var(--transition);
+  transition: border-color 0.3s ease, background 0.3s ease;
+  display: block;
 }
 
-.subscribe-form input:focus {
+.form-input:focus {
   border-color: var(--clr-gold);
+  background: rgba(255,255,255,0.08);
 }
 
-.subscribe-form input::placeholder {
+.form-input::placeholder {
   color: var(--clr-text-faint);
+}
+
+.form-error {
+  display: block;
+  font-size: 0.8rem;
+  color: #ff6b6b;
+  margin-top: 5px;
+  min-height: 1em;
+}
+
+.form-success {
+  color: #51cf66;
+  font-family: var(--ff-ui);
+  margin-top: 1.5rem;
+  font-weight: 500;
 }
 
 .btn-subscribe {
@@ -1128,38 +1155,30 @@ button {
   color: var(--clr-base);
   border: none;
   border-radius: var(--radius-pill);
-  padding: 0.85rem 1.8rem;
+  padding: 1rem 2.2rem;
   font-family: var(--ff-ui);
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: background var(--transition), transform var(--transition);
-  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .btn-subscribe:hover {
-  background: var(--clr-gold-dark);
-  transform: translateY(-1px);
+  background: #f2c069;
+  transform: translateY(-2px);
 }
 
-.form-feedback {
-  font-family: var(--ff-ui);
-  font-size: 0.85rem;
-  margin-top: 1rem;
-  min-height: 1.2em;
-  transition: color var(--transition);
+.btn-subscribe:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
-
-.form-feedback.success { color: #7ab87a; }
-.form-feedback.error   { color: #c47a7a; }
 
 /* ---------- FOOTER ---------- */
 
-.site-footer {
-  background: var(--clr-base);
-  border-top: 1px solid var(--clr-border);
-  padding: 2.5rem 0;
-}
-
+/* Redundant footer section removed */
 .footer-inner {
   display: flex;
   flex-direction: column;
