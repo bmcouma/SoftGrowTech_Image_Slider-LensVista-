@@ -1,0 +1,257 @@
+/* ============================================================
+   LensVista — animations.css
+   All keyframe definitions and transition utilities.
+   Separated from style.css to keep animation logic isolated
+   and easy to tune independently.
+   ============================================================ */
+
+/* ---------- SLIDE TRANSITIONS ---------- */
+
+/* Entering from the right (next) */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px) scale(1.04);
+    filter: brightness(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Entering from the left (prev) */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px) scale(1.04);
+    filter: brightness(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Exiting to the left (next) */
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-60px) scale(0.97);
+  }
+}
+
+/* Exiting to the right (prev) */
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(60px) scale(0.97);
+  }
+}
+
+/* ---------- SLIDE CONTENT STAGGER ---------- */
+
+@keyframes contentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentFadeDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* ---------- BACKGROUND PARALLAX PAN ---------- */
+
+@keyframes bgPan {
+  from { transform: scale(1.08) translateX(-1%); }
+  to   { transform: scale(1.08) translateX(1%); }
+}
+
+@keyframes bgZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+
+/* ---------- PROGRESS BAR ---------- */
+
+@keyframes progressRun {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ---------- PAGE LOAD ---------- */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- LOGO / NAVBAR ---------- */
+
+@keyframes navSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- THUMBNAIL HOVER SHIMMER ---------- */
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---------- PULSING DOT (active indicator) ---------- */
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 184, 109, 0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(232, 184, 109, 0); }
+}
+
+/* ---------- INDICATOR FILL ---------- */
+
+@keyframes indicatorFill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ---------- SCROLL REVEAL UTILITIES ---------- */
+
+.reveal,
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal       { transform: translateY(28px); }
+.reveal-up    { transform: translateY(36px); }
+.reveal-left  { transform: translateX(-36px); }
+.reveal-right { transform: translateX(36px); }
+
+.reveal.visible,
+.reveal-up.visible,
+.reveal-left.visible,
+.reveal-right.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ---------- SLIDE STATE CLASSES ---------- */
+
+/*
+  Applied by SliderEngine.
+  .entering-next  — new slide coming in from right
+  .entering-prev  — new slide coming in from left
+  .exiting-next   — old slide going out to left
+  .exiting-prev   — old slide going out to right
+  .active         — currently visible slide
+*/
+
+.slide.entering-next {
+  animation: slideInRight 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide.entering-prev {
+  animation: slideInLeft 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide.exiting-next {
+  animation: slideOutLeft 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide.exiting-prev {
+  animation: slideOutRight 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Active slide background slow pan */
+.slide.active .slide-bg {
+  animation: bgZoom 8s ease-out forwards;
+}
+
+/* Content stagger for active slide */
+.slide.active .slide-category {
+  animation: contentFadeUp 0.6s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.slide.active .slide-title {
+  animation: contentFadeUp 0.7s 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.slide.active .slide-description {
+  animation: contentFadeUp 0.7s 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.slide.active .slide-cta {
+  animation: contentFadeUp 0.6s 0.75s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ---------- REDUCED MOTION OVERRIDE ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

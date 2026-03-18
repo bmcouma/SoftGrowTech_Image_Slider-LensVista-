@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LensVista — An immersive travel photography showcase with a premium image slider experience." />
+  <meta name="theme-color" content="#0a0a0c" />
+  <title>LensVista — See the World Differently</title>
+
+  <!-- Google Fonts: Cormorant Garamond (display) + DM Sans (UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SKIP NAVIGATION (accessibility)
+  ============================================================ -->
+  <a href="#slider" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a href="#" class="nav-logo" aria-label="LensVista home">
+        <img src="logo.png" alt="LensVista Logo" class="site-logo-img" style="height: 32px; width: auto; margin-right: 8px;" />
+        <span class="logo-text">LensVista</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#slider">Explore</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </nav>
+    <!-- Mobile overlay menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#slider">Explore</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Get in Touch</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN HERO SLIDER
+  ============================================================ -->
+  <main id="slider">
+
+    <!-- ARIA live region — announces current slide to screen readers -->
+    <div class="sr-only" id="sliderAnnouncer" aria-live="polite" aria-atomic="true"></div>
+
+    <section
+      class="slider-section"
+      id="lensVistaSlider"
+      aria-label="Featured photography slider"
+      aria-roledescription="carousel"
+    >
+
+      <!-- Auto-play progress bar -->
+      <div class="progress-bar" id="progressBar" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <!-- Slide counter -->
+      <div class="slide-counter" id="slideCounter" aria-hidden="true">
+        <span class="counter-current" id="counterCurrent">01</span>
+        <span class="counter-divider">/</span>
+        <span class="counter-total" id="counterTotal">06</span>
+      </div>
+
+      <!-- Pause / Play toggle -->
+      <button
+        class="autoplay-toggle"
+        id="autoplayToggle"
+        aria-label="Pause automatic slideshow"
+        aria-pressed="false"
+        title="Pause / Resume slideshow"
+      >
+        <span class="toggle-icon pause-icon" aria-hidden="true">&#9646;&#9646;</span>
+        <span class="toggle-icon play-icon" aria-hidden="true" style="display:none;">&#9654;</span>
+      </button>
+
+      <!-- ---- SLIDES TRACK ---- -->
+      <div
+        class="slides-track"
+        id="slidesTrack"
+        aria-live="off"
+      >
+
+        <!-- Slide 1 -->
+        <div
+          class="slide active"
+          data-index="0"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 1 of 6: Santorini, Greece"
+          aria-hidden="false"
+        >
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1469796466635-455ede028aca?w=1600&q=85');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-category">Mediterranean</span>
+            <h2 class="slide-title">Santorini,<br /><em>Greece</em></h2>
+            <p class="slide-description">Where whitewashed walls meet the infinite blue of the Aegean — a place that feels less like a destination and more like a dream.</p>
+            <a href="#collections" class="slide-cta" tabindex="0">Explore Collection</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="slide"
+          data-index="1"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 2 of 6: Patagonia, Argentina"
+          aria-hidden="true"
+        >
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=85');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-category">South America</span>
+            <h2 class="slide-title">Patagonia,<br /><em>Argentina</em></h2>
+            <p class="slide-description">Raw, untamed, and breathtaking — the southernmost wilderness where glaciers meet ancient forests beneath skies that stretch forever.</p>
+            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="slide"
+          data-index="2"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 3 of 6: Zhangjiajie, China"
+          aria-hidden="true"
+        >
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&q=85');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-category">East Asia</span>
+            <h2 class="slide-title">Zhangjiajie,<br /><em>China</em></h2>
+            <p class="slide-description">Towering sandstone pillars shrouded in mist — the landscape that inspired the floating mountains of Avatar and humbles every visitor.</p>
+            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div
+          class="slide"
+          data-index="3"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 4 of 6: Sahara Desert, Morocco"
+          aria-hidden="true"
+        >
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1600&q=85');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-category">North Africa</span>
+            <h2 class="slide-title">Sahara,<br /><em>Morocco</em></h2>
+            <p class="slide-description">A sea of shifting dunes that swallows sound and returns silence. The Sahara at golden hour is one of Earth's most humbling spectacles.</p>
+            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div
+          class="slide"
+          data-index="4"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 5 of 6: Banff, Canada"
+          aria-hidden="true"
+        >
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=85');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-category">North America</span>
+            <h2 class="slide-title">Banff,<br /><em>Canada</em></h2>
+            <p class="slide-description">Glacial lakes of impossible turquoise, towering Rockies, and forests that seem to belong to another century — Canada's crown jewel.</p>
+            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div
+          class="slide"
+          data-index="5"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="Slide 6 of 6: Amalfi Coast, Italy"
+          aria-hidden="true"
+        >
+          <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1600&q=85');"></div>
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <span class="slide-category">Europe</span>
+            <h2 class="slide-title">Amalfi Coast,<br /><em>Italy</em></h2>
+            <p class="slide-description">Cliffside villages suspended between mountain and sea, where lemons grow wild and every sunset looks hand-painted by a master.</p>
+            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.slides-track -->
+
+      <!-- ---- NAVIGATION ARROWS ---- -->
+      <div class="slider-nav" aria-label="Slider navigation">
+        <button
+          class="nav-arrow nav-prev"
+          id="prevBtn"
+          aria-label="Previous slide"
+          title="Previous"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button
+          class="nav-arrow nav-next"
+          id="nextBtn"
+          aria-label="Next slide"
+          title="Next"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- ---- DOT INDICATORS ---- -->
+      <div class="slide-indicators" id="slideIndicators" role="tablist" aria-label="Slide indicators">
+        <button class="indicator active" role="tab" aria-selected="true"  aria-label="Go to slide 1" data-index="0"></button>
+        <button class="indicator"        role="tab" aria-selected="false" aria-label="Go to slide 2" data-index="1"></button>
+        <button class="indicator"        role="tab" aria-selected="false" aria-label="Go to slide 3" data-index="2"></button>
+        <button class="indicator"        role="tab" aria-selected="false" aria-label="Go to slide 4" data-index="3"></button>
+        <button class="indicator"        role="tab" aria-selected="false" aria-label="Go to slide 5" data-index="4"></button>
+        <button class="indicator"        role="tab" aria-selected="false" aria-label="Go to slide 6" data-index="5"></button>
+      </div>
+
+      <!-- ---- THUMBNAIL STRIP ---- -->
+      <div class="thumbnail-strip" id="thumbnailStrip" aria-label="Slide thumbnails" role="list">
+        <button class="thumbnail active" data-index="0" aria-label="View slide 1: Santorini" role="listitem">
+          <img src="https://images.unsplash.com/photo-1469796466635-455ede028aca?w=160&q=70" alt="Santorini, Greece" loading="lazy" />
+          <span class="thumb-label">Santorini</span>
+        </button>
+        <button class="thumbnail" data-index="1" aria-label="View slide 2: Patagonia" role="listitem">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=160&q=70" alt="Patagonia, Argentina" loading="lazy" />
+          <span class="thumb-label">Patagonia</span>
+        </button>
+        <button class="thumbnail" data-index="2" aria-label="View slide 3: Zhangjiajie" role="listitem">
+          <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=160&q=70" alt="Zhangjiajie, China" loading="lazy" />
+          <span class="thumb-label">Zhangjiajie</span>
+        </button>
+        <button class="thumbnail" data-index="3" aria-label="View slide 4: Sahara" role="listitem">
+          <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=160&q=70" alt="Sahara, Morocco" loading="lazy" />
+          <span class="thumb-label">Sahara</span>
+        </button>
+        <button class="thumbnail" data-index="4" aria-label="View slide 5: Banff" role="listitem">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=160&q=70" alt="Banff, Canada" loading="lazy" />
+          <span class="thumb-label">Banff</span>
+        </button>
+        <button class="thumbnail" data-index="5" aria-label="View slide 6: Amalfi Coast" role="listitem">
+          <img src="https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=160&q=70" alt="Amalfi Coast, Italy" loading="lazy" />
+          <span class="thumb-label">Amalfi</span>
+        </button>
+      </div>
+
+      <!-- ---- KEYBOARD HINT ---- -->
+      <div class="keyboard-hint" aria-hidden="true">
+        <span>&#8592; &#8594; Navigate</span>
+        <span class="hint-divider">|</span>
+        <span>Space Pause</span>
+      </div>
+
+    </section>
+    <!-- /.slider-section -->
+
+  </main>
+
+  <!-- ============================================================
+       COLLECTIONS SECTION
+  ============================================================ -->
+  <section class="collections-section section" id="collections">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Curated For You</span>
+        <h2 class="section-title">Explore by Collection</h2>
+        <p class="section-sub">Six regions. Thousands of stories. One lens.</p>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card reveal-up" style="--delay:0s">
+          <div class="collection-img">
+            <img src="https://images.unsplash.com/photo-1469796466635-455ede028aca?w=600&q=80" alt="Mediterranean" loading="lazy" />
+          </div>
+          <div class="collection-info">
+            <h3>Mediterranean</h3>
+            <span>14 Destinations</span>
+          </div>
+        </div>
+        <div class="collection-card reveal-up" style="--delay:0.1s">
+          <div class="collection-img">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="South America" loading="lazy" />
+          </div>
+          <div class="collection-info">
+            <h3>South America</h3>
+            <span>11 Destinations</span>
+          </div>
+        </div>
+        <div class="collection-card reveal-up" style="--delay:0.2s">
+          <div class="collection-img">
+            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="North America" loading="lazy" />
+          </div>
+          <div class="collection-info">
+            <h3>North America</h3>
+            <span>18 Destinations</span>
+          </div>
+        </div>
+        <div class="collection-card reveal-up" style="--delay:0.3s">
+          <div class="collection-img">
+            <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80" alt="Africa" loading="lazy" />
+          </div>
+          <div class="collection-info">
+            <h3>Africa</h3>
+            <span>9 Destinations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section class="about-section section" id="about">
+    <div class="container about-inner reveal">
+      <div class="about-text">
+        <span class="section-tag">Our Philosophy</span>
+        <h2 class="section-title">Photography Is<br /><em>Controlled Obsession.</em></h2>
+        <p>Every frame in the LensVista collection is chosen not for its technical perfection but for its ability to make a viewer feel the weight of standing in that place — the temperature, the silence, the scale.</p>
+        <p>We work with photographers from 42 countries who share one belief: the world is not running out of beautiful places. We are just running out of attention.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-n">42</span>
+          <span class="stat-l">Countries</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-n">6K+</span>
+          <span class="stat-l">Photographs</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-n">180+</span>
+          <span class="stat-l">Photographers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+  <section class="contact-section section" id="contact">
+    <div class="container contact-inner reveal">
+      <span class="section-tag">Stay Connected</span>
+      <h2 class="section-title">Never Miss a Frame.</h2>
+      <p class="contact-sub">Subscribe to receive curated photography collections, travel stories, and behind-the-lens insights delivered monthly.</p>
+      <div class="subscribe-form">
+        <input type="email" id="emailInput" placeholder="Your email address" aria-label="Email address for newsletter" />
+        <button class="btn-subscribe" id="subscribeBtn" type="button">Subscribe</button>
+      </div>
+      <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEKLINI TECHNOLOGIES CTA SECTION
+  ============================================================ -->
+  <section class="custom-software-section section" style="background: var(--bg-surface);">
+    <div class="container text-center reveal">
+      <span class="section-tag" style="margin-bottom: 8px; display: block;">Owned by Teklini Technologies</span>
+      <h2 class="section-title">Build Custom Software</h2>
+      <p style="margin-bottom: 24px; color: var(--text-muted);">Need a robust web app, enterprise system, or custom software? Reach out to Teklini Technologies.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="mailto:teklinitechnologies@gmail.com" class="slide-cta" style="border: 1px solid var(--accent); color: var(--accent);">teklinitechnologies@gmail.com</a>
+        <a href="tel:+254791832015" class="slide-cta" style="border: 1px solid var(--accent); color: var(--accent);">Call: +254 791832015</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <img src="logo.png" alt="LensVista Logo" class="site-logo-img" style="height: 32px; width: auto; margin-right: 8px;" />
+          <span class="logo-text">LensVista</span>
+        </a>
+        <p>See the world differently.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#slider">Explore</a>
+        <a href="#collections">Collections</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">
+        &copy; 2025 LensVista. Photography &copy; respective photographers via
+        <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
+        Built with HTML5, CSS3 &amp; Vanilla JavaScript.<br/>
+        CipherForge — Passwords generated entirely in your browser.<br/>
+        Owned by <strong>Teklini Technologies</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp CTA -->
+  <a href="https://wa.me/254791832015?text=Hello%20Teklini%20Technologies,%20I%20would%20like%20to%20hire%20you." class="floating-whatsapp" target="_blank" rel="noopener noreferrer">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12.01 2.002c-5.523 0-10 4.477-10 10 0 1.763.456 3.42 1.26 4.88L2 22l5.24-1.353a9.962 9.962 0 004.77 1.205h.005c5.52 0 10-4.477 10-10 0-5.522-4.48-10-10-10zm0 18.286h-.003a8.239 8.239 0 01-4.2-1.155l-.3-.18-3.125.819.832-3.048-.198-.314a8.216 8.216 0 01-1.28-4.41c0-4.568 3.716-8.285 8.283-8.285 4.566 0 8.281 3.717 8.281 8.285 0 4.566-3.715 8.288-8.29 8.288z"/>
+      <path d="M16.517 13.56c-.225-.113-1.334-.66-1.54-.735-.206-.075-.357-.113-.507.113-.15.225-.582.735-.713.886-.131.15-.262.17-.487.057-.225-.113-.95-.35-1.81-1.118-.668-.598-1.119-1.336-1.25-1.562-.131-.226-.014-.348.1-.46.101-.099.225-.262.338-.393.113-.131.15-.226.225-.376.075-.15.038-.282-.019-.395-.056-.113-.506-1.222-.693-1.673-.182-.44-.367-.38-.506-.388-.131-.006-.281-.006-.431-.006a.823.823 0 00-.594.276c-.206.226-.788.771-.788 1.88s.807 2.181.919 2.332c.112.15 1.583 2.457 3.868 3.424 2.285.967 2.285.644 2.7.606.413-.038 1.334-.545 1.522-1.072.188-.526.188-.977.131-1.072-.057-.094-.207-.15-.432-.263z"/>
+    </svg>
+    Hire Teklini Tech
+  </a>
+
+  <!-- Scripts — deferred for performance -->
+  <script src="slider.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
