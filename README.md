@@ -1,121 +1,69 @@
-# 🌍 LensVista — Immersive Image Slider
+# LensVista - The World, Curated.
 
-LensVista is a premium, full-viewport travel photography showcase built around an engineered image slider experience. It goes beyond the standard carousel to deliver a cinematic, magazine-grade interface powered entirely by vanilla web standards.
+![LensVista](https://img.shields.io/badge/Status-Completed-success) ![VanillaJS](https://img.shields.io/badge/Tech-Vanilla_JS-f7df1e) ![CSS3](https://img.shields.io/badge/Tech-CSS3-1572B6)
 
-> See the world differently.
-
----
-
-## 🔗 Live Preview
-
-Open `index.html` directly in any modern browser. No server, no build tools, no dependencies.
+Welcome to **LensVista**, a cinematic, high-fidelity travel photography and curation platform. Developed entirely with foundational web technologies (HTML5, CSS3, and Vanilla JavaScript), LensVista delivers a luxury magazine-style experience featuring advanced animations, live API data, and an interactive global directory.
 
 ---
 
-## ✨ Features
+## 🌟 Key Features
 
-### Slider Engine (beyond requirements)
-- **Direction-aware transitions** — separate CSS animations for next/previous navigation
-- **Auto-play with progress bar** — animated progress indicator synchronised to the interval
-- **Keyboard navigation** — `← →` arrows navigate slides; `Space` pauses / resumes
-- **Touch & swipe support** — mobile-friendly swipe detection with vertical scroll fallback
-- **Pause on hover** — auto-play pauses when the user hovers over the slider
-- **Per-slide content** — each slide has a category label, title, description, and CTA
-- **Animated slide counter** — smooth numeric transition on every slide change
-- **Thumbnail strip** — click any thumbnail to jump directly to that slide
-- **Progress indicator dots** — animated fill bars synchronised to auto-play timing
-- **Play / Pause toggle** — dedicated UI button with ARIA state management
+### 1. Cinematic Hero JavaScript Slider
+A custom-built, unstoppably smooth 60FPS slider that gracefully transitions between breathtaking global destinations using an animated clipping-path layout and parallax visual effects. 
 
-### Accessibility
-- Full ARIA roles (`carousel`, `group`, `tab`, `tablist`, `live`)
-- ARIA live region announces the current slide to screen readers
-- `aria-hidden` toggled correctly on non-active slides
-- Keyboard focus management with `tabindex` control on slide CTAs
-- Skip navigation link for keyboard users
-- Respects `prefers-reduced-motion` — all animations disabled for users who prefer it
-- Visible `:focus-visible` outlines throughout
+### 2. Live Environmental Data
+The slider is deeply integrated with the **Open-Meteo API** to dynamically fetch and display real-time live temperatures and weather conditions for whatever destination is currently on screen.
 
-### Full Website
-- Fixed navbar with scroll state, mobile hamburger menu, and overlay
-- Collections grid section with hover zoom effects
-- About section with animated statistics
-- Email subscription form with validation, shake feedback, and simulated submission
-- Fully responsive — mobile, tablet, desktop
-- Scroll reveal animations via IntersectionObserver
+### 3. Comprehensive Collections Directory
+Explore 75 unique destinations systematically categorized across 6 continental regions. 
+- **Deterministic Seeding:** Powered dynamically via Picsum, ensuring each unique location always perfectly loads a beautiful, consistent cover image.
+- **Interactive Routing:** Clicking any destination card intelligently routes you directly to its **Official Tourism Website** (e.g. Yosemite National Park's actual website) or smoothly defaults to its highly specific Wikipedia encyclopedia page.
+
+### 4. Cinematic Motion Gallery
+A truly premium addition: a CSS grid showcasing stunning, auto-playing, muted HTML5 videos capturing the "Human Element" and cultural aesthetic of travel, fully equipped with bulletproof image fallbacks.
+
+### 5. Infinity Marquee & Live Quotes
+A seamless, pure-CSS continuous tracking slider highlights traveler testimonials from around the globe, seamlessly combined with live-injected inspiration from the **DummyJSON Quote API**.
+
+### 6. Fully Responsive & Accessible
+Meticulously styled using semantic HTML, ARIA attributes, modern CSS Grid/Flexbox architecture, and smart Intersection Observers for beautiful scroll-reveal load animations across all device sizes.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Running the Project
 
-| Technology | Purpose |
-|---|---|
-| **HTML5** | Semantic structure, ARIA roles, accessibility |
-| **CSS3** | Custom design system, CSS variables, Grid, Flexbox, animations |
-| **Vanilla JavaScript (ES6+)** | OOP slider engine, event handling, IntersectionObserver |
-| **Google Fonts** | Cormorant Garamond (display) + DM Sans (UI) |
-| **Unsplash** | Open-source photography under the Unsplash License |
+Because LensVista uses completely vanilla web technologies, there is no complicated build step or package installation required!
 
----
-
-## 🎨 Design System
-
-| Token | Value | Usage |
-|---|---|---|
-| Base | `#0a0a0c` | Page background |
-| Surface | `#111115` | Section backgrounds |
-| Gold | `#e8b86d` | Primary accent, CTAs |
-| Teal | `#6b9fa8` | Secondary accent |
-| Text | `#f2f0ea` | Primary text |
-| Muted | `#888880` | Secondary text |
-
-**Typography:** Cormorant Garamond (headings, display) · DM Sans (UI, body)
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/bmcouma/SoftGrowTech_Image_Slider-LensVista-.git
+   ```
+2. **Open the project:**
+   Simply open `index.html` in your favorite modern web browser, or use a tool like VS Code's Live Server.
+3. **Explore:**
+   - Scroll through the homepage (`index.html`) to see the motion galleries and quotes.
+   - Click **Collections** to browse the 75 interactive destination tiles (`collections.html`).
 
 ---
 
-## 📁 Project Structure
-
-```text
-LensVista/
-├── index.html            ← Semantic structure, ARIA, all sections
-├── css/
-│   ├── style.css         ← Full design system and component styles
-│   └── animations.css    ← All keyframes and transition utilities
-└── js/
-    ├── slider.js         ← SliderEngine class (OOP, fully decoupled)
-    └── main.js           ← App initialisation, navbar, scroll reveal
-```
+## 🛠 Built With
+* **HTML5:** Semantic architecture.
+* **Vanilla CSS3:** Native CSS variables, keyframe animations, grid layouts, and gradients. No frameworks used.
+* **Vanilla JavaScript (ES6+):** Intersection Observers, Fetch API, DOM manipulation, custom Slider Engine.
+* **APIs Used:**
+  * Open-Meteo (Live Weather)
+  * DummyJSON (Quotes)
+  * Picsum (Deterministic Image Seeding)
+  * Google TV / Coverr (Open-source Motion Video)
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## 🏢 Powered By Teklini Technologies
 
-| Key | Action |
-|---|---|
-| `→` | Next slide |
-| `←` | Previous slide |
-| `Space` | Pause / Resume auto-play |
+Need a robust web app, enterprise system, or custom software? 
+**Teklini Technologies** specializes in building performant, visually stunning, and highly functional digital architecture.
 
----
+📧 Email: [teklinitechnologies@gmail.com](mailto:teklinitechnologies@gmail.com)  
+📞 Call/WhatsApp: +254 791832015  
 
-## 🚀 Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/bmcouma/SoftGrowTech_Image_Slider-LensVista-.git
-
-# Navigate into the project
-cd SoftGrowTech_Image_Slider-LensVista-
-
-# Open in browser
-open index.html
-```
-
-Requires an active internet connection to load Google Fonts and Unsplash imagery.
-
----
-
-## 📄 License
-
-This project is open source under the MIT License.  
-Photography sourced from [Unsplash](https://unsplash.com) under the Unsplash License.  
-Typography from [Google Fonts](https://fonts.google.com) under the Open Font License.
+*LensVista proudly features **CipherForge** — Passwords generated entirely in your browser.*

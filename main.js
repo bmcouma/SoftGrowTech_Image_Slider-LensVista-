@@ -62,9 +62,8 @@
       counterCurrentId:  "counterCurrent",
       counterTotalId:    "counterTotal",
       announcerId:       "sliderAnnouncer",
-      autoplayToggleId:  "autoplayToggle",
-      interval:          6000,
-      pauseOnHover:      true,
+      interval:          4500,  /* Reduced for non-stop action */
+      pauseOnHover:      false, /* Completely nonstop */
       loop:              true,
     });
 
@@ -170,86 +169,63 @@
   }
 
   /* ============================================================
-     4. SUBSCRIBE FORM
+     4. CONTACT / SUBSCRIBE FORM
   ============================================================ */
 
   function initSubscribeForm() {
-    const btn      = document.getElementById("subscribeBtn");
-    const input    = document.getElementById("emailInput");
-    const feedback = document.getElementById("formFeedback");
+    const form    = document.getElementById("subscribeForm");
+    const email   = document.getElementById("emailInput");
+    const error   = document.getElementById("emailError");
+    const success = document.getElementById("formSuccess");
 
-    if (!btn || !input) return;
-
-    function validateEmail(email) {
-      /* RFC 5322 simplified pattern */
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-    }
-
-    function showFeedback(message, type) {
-      if (!feedback) return;
-      feedback.textContent = message;
-      feedback.className   = "form-feedback " + type;
-
-      /* Auto-clear success message after 5 seconds */
-      if (type === "success") {
-        setTimeout(function () {
-          feedback.textContent = "";
-          feedback.className   = "form-feedback";
-        }, 5000);
-      }
-    }
+    if (!form || !email) return;
 
     function shakeInput() {
-      input.style.transition = "transform 0.08s ease";
+      email.style.transition = "transform 0.08s ease";
       const steps = [0, -6, 6, -4, 4, -2, 2, 0];
       let i = 0;
       const step = () => {
         if (i < steps.length) {
-          input.style.transform = "translateX(" + steps[i] + "px)";
+          email.style.transform = "translateX(" + steps[i] + "px)";
           i++;
           setTimeout(step, 55);
         } else {
-          input.style.transform = "";
+          email.style.transform = "";
         }
       };
       step();
     }
 
-    btn.addEventListener("click", function () {
-      const email = input.value.trim();
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const emailVal = email.value.trim();
+      const btn = form.querySelector('button[type="submit"]');
 
-      if (!email) {
-        showFeedback("Please enter your email address.", "error");
+      if (!emailVal || !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal))) {
+        if (error) error.textContent = "Please enter a valid email address.";
         shakeInput();
-        input.focus();
+        email.focus();
         return;
       }
+      
+      if (error) error.textContent = "";
 
-      if (!validateEmail(email)) {
-        showFeedback("That does not look like a valid email address.", "error");
-        shakeInput();
-        input.focus();
-        return;
-      }
-
-      /* Simulate submission (replace with real API call if needed) */
-      btn.textContent = "Subscribing...";
-      btn.disabled    = true;
+      /* Simulate network request */
+      const originalText = btn.textContent;
+      btn.textContent = "Sending...";
+      btn.disabled = true;
 
       setTimeout(function () {
-        showFeedback(
-          "You are subscribed! Watch your inbox for the first collection.",
-          "success"
-        );
-        input.value     = "";
-        btn.textContent = "Subscribe";
-        btn.disabled    = false;
+        if (success) success.style.display = "block";
+        form.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          if (success) success.style.display = "none";
+        }, 5000);
       }, 1200);
-    });
-
-    /* Allow Enter key submission */
-    input.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") btn.click();
     });
   }
 
@@ -294,6 +270,155 @@
   }
 
   /* ============================================================
+     7. COUNTERS — Auto-animate stats on scroll
+  ============================================================ */
+  function initCounters() {
+    const counters = document.querySelectorAll(".counter");
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver(function (entries, ob) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const target = +entry.target.getAttribute("data-target");
+          const duration = 2000;
+          let current = 0;
+          let startTime = null;
+
+          function animateCount(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const percent = Math.min(progress / duration, 1);
+            
+            // easeOutQuart 
+            const easeOut = 1 - Math.pow(1 - percent, 4);
+            current = Math.floor(easeOut * target);
+
+            entry.target.textContent = current;
+
+            if (percent < 1) {
+              window.requestAnimationFrame(animateCount);
+            } else {
+              entry.target.textContent = target; // Ensure it ends exactly on target
+            }
+          }
+
+          window.requestAnimationFrame(animateCount);
+          ob.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  /* ============================================================
+     8. OPEN-METEO API — Live Slide Weather
+  ============================================================ */
+  function initWeatherAPI() {
+    const coords = [
+      { lat: 36.3932, lon: 25.4615 }, // Santorini
+      { lat: -50.9423, lon: -73.4068 }, // Patagonia
+      { lat: 29.1170, lon: 110.4791 }, // Zhangjiajie
+      { lat: 31.1158, lon: -4.4357 }, // Sahara
+      { lat: 51.1784, lon: -115.5708 }, // Banff
+      { lat: 40.6358, lon: 14.6042 }  // Amalfi
+    ];
+    
+    const tempEl = document.getElementById("weatherTemp");
+    const widget = document.getElementById("weatherWidget");
+    if (!tempEl || !widget) return;
+
+    let abortController = null;
+
+    function updateWeather() {
+       const currentSlide = document.querySelector(".slide.active");
+       if (!currentSlide) return;
+       const index = parseInt(currentSlide.getAttribute("data-index"), 10);
+       if (isNaN(index)) return;
+       
+       const c = coords[index];
+
+       // Abort previous fetch if pending
+       if (abortController) abortController.abort();
+       abortController = new AbortController();
+
+       tempEl.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2" style="animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Syncing...`;
+       
+       fetch(`https://api.open-meteo.com/v1/forecast?latitude=${c.lat}&longitude=${c.lon}&current_weather=true`, { signal: abortController.signal })
+         .then(res => res.json())
+         .then(data => {
+           const temp = Math.round(data.current_weather.temperature);
+           let cond = "🌍";
+           switch(data.current_weather.weathercode) {
+             case 0: cond = "☀️"; break; 
+             case 1: case 2: case 3: cond = "⛅"; break; 
+             case 45: case 48: cond = "🌫️"; break;
+             case 51: case 53: case 55: case 61: case 63: case 65: cond = "🌧️"; break;
+             case 71: case 73: case 75: cond = "❄️"; break;
+             case 95: case 96: case 99: cond = "⛈️"; break;
+             default: cond = "⛅";
+           }
+           tempEl.innerHTML = `<span style="font-size:1.1rem">${cond}</span> &nbsp;Live <span style="color:var(--clr-gold);">${temp}°C</span>`;
+         })
+         .catch(err => {
+           if (err.name !== 'AbortError') {
+             tempEl.innerHTML = `🌍 &nbsp;Offline`;
+           }
+         });
+    }
+
+    // Initial load
+    updateWeather();
+
+    // Listen to changes in DOM for slides gaining `.active` class
+    const track = document.getElementById("slidesTrack");
+    if (track) {
+      const observer = new MutationObserver((mutations) => {
+         mutations.forEach(m => {
+            if (m.attributeName === "class" && m.target.classList.contains("active")) {
+               updateWeather();
+            }
+         });
+      });
+      observer.observe(track, { attributes: true, subtree: true });
+    }
+  }
+
+  /* ============================================================
+     9. INSPIRATION API — Travel Quote
+  ============================================================ */
+  function initQuoteAPI() {
+    const textEls = document.querySelectorAll(".api-quote-text");
+    const authorEls = document.querySelectorAll(".api-quote-author");
+    if (!textEls.length || !authorEls.length) return;
+
+    // We use a reliable mock fallback, but attempt to fetch a real quote natively.
+    const fallbackQuotes = [
+      { text: "Photography is the story I fail to put into words.", author: "Destin Sparks" },
+      { text: "To travel is to discover that everyone is wrong about other countries.", author: "Aldous Huxley" },
+      { text: "The world is a book, and those who do not travel read only a page.", author: "Saint Augustine" },
+      { text: "Only photograph what you love.", author: "Tim Walker" },
+      { text: "Life is either a daring adventure or nothing at all.", author: "Helen Keller" }
+    ];
+
+    fetch("https://dummyjson.com/quotes/random")
+      .then(res => res.json())
+      .then(data => {
+        // DummyJSON gives random quotes. Populate all instances (for the infinite marquee duplicate).
+        textEls.forEach(el => el.innerHTML = `"${data.quote}"`);
+        authorEls.forEach(el => el.innerHTML = `&mdash; ${data.author}`);
+      })
+      .catch(() => {
+        // Fallback to our curated travel photography quotes if the API is blocked
+        const random = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+        textEls.forEach(el => el.innerHTML = `"${random.text}"`);
+        authorEls.forEach(el => el.innerHTML = `&mdash; ${random.author}`);
+      });
+  }
+
+  /* ============================================================
      BOOT — run all initialisers when DOM is ready
   ============================================================ */
 
@@ -302,8 +427,11 @@
     initNavbar();
     initSlider();
     initScrollReveal();
+    initCounters();
     initSubscribeForm();
     initSmoothScroll();
+    initWeatherAPI();
+    initQuoteAPI();
 
     console.info("[LensVista] Application initialised successfully.");
   });

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collections - LensVista</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .collections-hero {
+      padding: 140px 20px 80px;
+      text-align: center;
+      background: var(--clr-base);
+    }
+    .region-section {
+      padding: 80px 20px;
+      border-top: 1px solid var(--clr-border);
+    }
+    .region-section:nth-child(even) {
+      background: var(--clr-surface);
+    }
+    .region-header {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .region-title {
+      font-family: var(--ff-display);
+      font-size: 3rem;
+      color: var(--clr-gold);
+      line-height: 1.1;
+    }
+    .region-count {
+      font-family: var(--ff-ui);
+      color: var(--clr-text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    .destinations-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .dest-card {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: crosshair;
+      border: 1px solid var(--clr-border);
+      transition: transform 0.4s var(--ease), border-color 0.4s;
+      background: var(--clr-surface-2);
+    }
+    .dest-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--clr-gold);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .dest-img-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .dest-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease), filter 0.4s;
+      filter: brightness(0.7) saturate(0.85);
+    }
+    .dest-card:hover .dest-img-wrapper img {
+      transform: scale(1.08);
+      filter: brightness(0.9) saturate(1.1);
+    }
+    .dest-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.25rem 1.25rem;
+      background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0) 100%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .dest-name {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      color: var(--clr-white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+    .dest-status {
+      font-family: var(--ff-ui);
+      font-size: 0.75rem;
+      color: var(--clr-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="site-header" role="banner" style="background: var(--clr-base); border-bottom: 1px solid var(--clr-border);">
+    <nav class="navbar scrolled" aria-label="Primary navigation">
+      <a href="index.html" class="nav-logo" aria-label="LensVista home">
+        <img src="logo.png" alt="LensVista Logo" class="site-logo-img" style="height: 32px; width: auto; margin-right: 8px;" />
+        <span class="logo-text">LensVista</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#slider">Explore</a></li>
+        <li><a href="collections.html" style="color: var(--clr-gold);">Collections</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="collections-hero reveal">
+      <span class="section-tag">Global Directory</span>
+      <h1 style="font-family: var(--ff-display); font-size: 4rem; margin-bottom: 20px;">The Collections</h1>
+      <p style="color: var(--clr-text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">Explore our comprehensive, curated index of the world's most breathtaking locations. 75 destinations across 6 regions.</p>
+    </section>
+
+    <!-- MEDITERRANEAN -->
+    <section class="region-section" id="mediterranean">
+      <div class="region-header reveal-up">
+        <div>
+          <h2 class="region-title">Mediterranean</h2>
+        </div>
+        <div class="region-count">14 Destinations</div>
+      </div>
+      <div class="destinations-grid reveal-up">
+        <div class="dest-card"><div class="dest-name">Santorini</div><div class="dest-status">Featured</div></div>
+        <div class="dest-card"><div class="dest-name">Amalfi Coast</div><div class="dest-status">Featured</div></div>
+        <div class="dest-card"><div class="dest-name">Cinque Terre</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Mykonos</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Ibiza</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Mallorca</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Crete</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Corsica</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Malta</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Dubrovnik</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Split</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Kotor</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Antalya</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Zakynthos</div><div class="dest-status">Gallery</div></div>
+      </div>
+    </section>
+
+    <!-- SOUTH AMERICA -->
+    <section class="region-section" id="south-america">
+      <div class="region-header reveal-up">
+        <div>
+          <h2 class="region-title">South America</h2>
+        </div>
+        <div class="region-count">11 Destinations</div>
+      </div>
+      <div class="destinations-grid reveal-up">
+        <div class="dest-card"><div class="dest-name">Patagonia</div><div class="dest-status">Featured</div></div>
+        <div class="dest-card"><div class="dest-name">Machu Picchu</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Galapagos</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Rio de Janeiro</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Salar de Uyuni</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Atacama Desert</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Iguazu Falls</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Cartagena</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Cusco</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Buenos Aires</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Torres del Paine</div><div class="dest-status">Gallery</div></div>
+      </div>
+    </section>
+
+    <!-- NORTH AMERICA -->
+    <section class="region-section" id="north-america">
+      <div class="region-header reveal-up">
+        <div>
+          <h2 class="region-title">North America</h2>
+        </div>
+        <div class="region-count">18 Destinations</div>
+      </div>
+      <div class="destinations-grid reveal-up">
+        <div class="dest-card"><div class="dest-name">Banff</div><div class="dest-status">Featured</div></div>
+        <div class="dest-card"><div class="dest-name">Yellowstone</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Grand Canyon</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Yosemite</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Zion</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Glacier NP</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Tulum</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Hawaii</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Maui</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Sedona</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Antelope Canyon</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Lake Tahoe</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Niagara Falls</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Acadia</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Key West</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Big Sur</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Havana</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Vancouver Island</div><div class="dest-status">Gallery</div></div>
+      </div>
+    </section>
+
+    <!-- AFRICA -->
+    <section class="region-section" id="africa">
+      <div class="region-header reveal-up">
+        <div>
+          <h2 class="region-title">Africa</h2>
+        </div>
+        <div class="region-count">9 Destinations</div>
+      </div>
+      <div class="destinations-grid reveal-up">
+        <div class="dest-card"><div class="dest-name">Sahara Desert</div><div class="dest-status">Featured</div></div>
+        <div class="dest-card"><div class="dest-name">Serengeti</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Victoria Falls</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Cape Town</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Mt Kilimanjaro</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Marrakech</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Zanzibar</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Okavango Delta</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Pyramids of Giza</div><div class="dest-status">Gallery</div></div>
+      </div>
+    </section>
+
+    <!-- ASIA -->
+    <section class="region-section" id="asia">
+      <div class="region-header reveal-up">
+        <div>
+          <h2 class="region-title">Asia</h2>
+        </div>
+        <div class="region-count">15 Destinations</div>
+      </div>
+      <div class="destinations-grid reveal-up">
+        <div class="dest-card"><div class="dest-name">Zhangjiajie</div><div class="dest-status">Featured</div></div>
+        <div class="dest-card"><div class="dest-name">Kyoto</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Bali</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Phuket</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Halong Bay</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Mount Fuji</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Angkor Wat</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Maldives</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Petra</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Taj Mahal</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Boracay</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Seoul</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Tokyo</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Chiang Mai</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Bagan</div><div class="dest-status">Gallery</div></div>
+      </div>
+    </section>
+
+    <!-- OCEANIA -->
+    <section class="region-section" id="oceania">
+      <div class="region-header reveal-up">
+        <div>
+          <h2 class="region-title">Oceania</h2>
+        </div>
+        <div class="region-count">8 Destinations</div>
+      </div>
+      <div class="destinations-grid reveal-up">
+        <div class="dest-card"><div class="dest-name">Great Barrier Reef</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Bora Bora</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Fiordland</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Sydney</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Gold Coast</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Tahiti</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Fiji</div><div class="dest-status">Gallery</div></div>
+        <div class="dest-card"><div class="dest-name">Queenstown</div><div class="dest-status">Gallery</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="logo.png" alt="LensVista Logo" class="site-logo-img" style="height: 32px; width: auto; margin-right: 8px;" />
+          <span class="logo-text">LensVista</span>
+        </a>
+        <p>See the world differently.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#slider">Explore</a>
+        <a href="collections.html">Collections</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <p class="footer-copy">
+        &copy; 2025 LensVista. Photography &copy; respective photographers via
+        <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.<br/>
+        CipherForge — Passwords generated entirely in your browser.<br/>
+        Owned by <strong>Teklini Technologies</strong>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    const officialLinks = {
+      "Banff": "https://www.banfflakelouise.com/",
+      "Yellowstone": "https://www.nps.gov/yell/index.htm",
+      "Yosemite": "https://www.yosemite.com/",
+      "Grand Canyon": "https://www.nps.gov/grca/",
+      "Zion": "https://www.nps.gov/zion/",
+      "Glacier NP": "https://www.nps.gov/glac/",
+      "Hawaii": "https://www.gohawaii.com/",
+      "Maui": "https://www.gohawaii.com/islands/maui",
+      "Serengeti": "https://www.serengeti.com/",
+      "Machu Picchu": "https://www.machupicchu.gob.pe/",
+      "Patagonia": "https://www.patagonia-argentina.com/en/",
+      "Amalfi Coast": "https://www.amalficoast.com/",
+      "Santorini": "https://santorini.gr/",
+      "Kyoto": "https://kyoto.travel/en/",
+      "Mount Fuji": "https://www.fujisan-pt.com/en/",
+      "Great Barrier Reef": "https://greatbarrierreef.org/",
+      "Bora Bora": "https://tahititourisme.com/islands/bora-bora/",
+      "Sahara Desert": "https://www.lonelyplanet.com/articles/sahara-desert-travel",
+      "Victoria Falls": "https://www.victoriafalls-guide.net/"
+    };
+
+    document.querySelectorAll('.dest-card').forEach((card, index) => {
+      const name = card.querySelector('.dest-name').innerText;
+      const status = card.querySelector('.dest-status').innerText;
+      
+      // Seeded image based on the destination name to guarantee 100% reliable, unique images
+      const safeName = encodeURIComponent(name.replace(/\s+/g, ''));
+      const imgUrl = `https://picsum.photos/seed/${safeName}/600/400`;
+      
+      card.innerHTML = `
+        <div class="dest-img-wrapper">
+          <img src="${imgUrl}" alt="${name}" loading="lazy" />
+        </div>
+        <div class="dest-info">
+          <div class="dest-name">${name}</div>
+          <div class="dest-status">${status}</div>
+        </div>
+      `;
+      
+      // Make the entire card a clickable link to specific destination websites
+      card.title = `Visit ${name}`;
+      card.style.cursor = "pointer";
+      card.onclick = () => {
+         // Use the curated official website link, or default to the specific Wikipedia encyclopedia page
+         const targetUrl = officialLinks[name] || `https://en.wikipedia.org/wiki/${name.replace(/\s+/g, '_')}`;
+         window.open(targetUrl, '_blank');
+      };
+    });
+  </script>
+</body>
+</html>

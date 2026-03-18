@@ -754,57 +754,181 @@ button {
   opacity: 0.4;
 }
 
-/* ---------- COLLECTIONS SECTION ---------- */
-
+/* ---------- COLLECTIONS SECTION ---------- *//* ============================================================
+   7. COLLECTIONS (Directory Previews)
+============================================================ */
 .collections-section {
-  background: var(--clr-surface);
+  padding-bottom: 2rem;
 }
-
 .collections-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
-
 .collection-card {
   position: relative;
+  aspect-ratio: 3/4;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 3/4;
+  border: 1px solid var(--clr-border);
   cursor: pointer;
-  background: var(--clr-surface-2);
+  background: var(--clr-surface);
+  transition: transform 0.5s var(--ease), border-color 0.4s ease;
 }
-
+.collection-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--clr-gold);
+}
 .collection-img {
   position: absolute;
   inset: 0;
-  transition: transform 0.7s var(--ease);
+  z-index: 1;
 }
-
 .collection-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.65);
-  transition: filter var(--transition);
+  transition: transform 0.8s var(--ease), filter 0.5s ease;
+  filter: brightness(0.6) saturate(0.8);
 }
-
-.collection-card:hover .collection-img {
-  transform: scale(1.06);
-}
-
 .collection-card:hover .collection-img img {
-  filter: brightness(0.8);
+  transform: scale(1.08);
+  filter: brightness(0.9) saturate(1.1);
 }
-
 .collection-info {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem 1.2rem 1.2rem;
-  background: linear-gradient(to top, rgba(10,10,12,0.9), transparent);
+  padding: 40px 24px 24px;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 12, 0.95) 0%,
+    rgba(10, 10, 12, 0) 100%
+  );
   z-index: 2;
+}
+.collection-info h3 {
+  font-family: var(--ff-display);
+  font-size: 1.8rem;
+  color: var(--clr-white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.collection-info span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--clr-gold);
+}
+
+/* ============================================================
+   8. CINEMATIC MOTION GALLERY
+============================================================ */
+.motion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.motion-card {
+  position: relative;
+  aspect-ratio: 9/16;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+  cursor: crosshair;
+  background: var(--clr-surface);
+}
+.motion-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-color: var(--clr-gold);
+}
+.motion-vid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: filter 0.6s var(--ease), transform 0.8s var(--ease);
+  filter: brightness(0.65) saturate(0.8);
+}
+.motion-card:hover .motion-vid {
+  filter: brightness(0.85) saturate(1.1);
+  transform: scale(1.05);
+}
+.motion-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem 2rem 2rem;
+  background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0) 100%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ============================================================
+   9. CONTINUOUS STORIES MARQUEE
+============================================================ */
+.stories-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  /* Smooth fade at the edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 1rem 0 2rem;
+}
+
+.stories-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollMarquee 45s linear infinite;
+  will-change: transform;
+}
+
+.stories-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Since we duplicate the exact track of 6 items (5 stories + 1 quote component) 
+       inside the flexbox, we move left by exactly half the total width plus half the gap 
+       to create a seamless loop visually. */
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+.story-card {
+  width: 380px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.03);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--clr-border);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+  cursor: grab;
+}
+
+.story-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--clr-gold);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.story-card:active {
+  cursor: grabbing;
 }
 
 .collection-info h3 {

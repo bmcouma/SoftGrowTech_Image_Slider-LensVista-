@@ -70,6 +70,14 @@
       aria-roledescription="carousel"
     >
 
+      <!-- Live Weather Widget (Open Source API Integration) -->
+      <div id="weatherWidget" aria-label="Live weather at destination" style="position: absolute; top: 100px; right: 2.5rem; z-index: 20; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; background: rgba(0,0,0,0.3); padding: 8px 18px; border-radius: 30px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--clr-border); font-family: var(--ff-ui); font-size: 0.85rem; letter-spacing: 0.05em; transition: opacity 0.3s ease;">
+        <span id="weatherTemp" style="display: flex; align-items: center; gap: 8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Connecting Satellites...
+        </span>
+      </div>
+
       <!-- Auto-play progress bar -->
       <div class="progress-bar" id="progressBar" aria-hidden="true">
         <div class="progress-fill" id="progressFill"></div>
@@ -82,17 +90,7 @@
         <span class="counter-total" id="counterTotal">06</span>
       </div>
 
-      <!-- Pause / Play toggle -->
-      <button
-        class="autoplay-toggle"
-        id="autoplayToggle"
-        aria-label="Pause automatic slideshow"
-        aria-pressed="false"
-        title="Pause / Resume slideshow"
-      >
-        <span class="toggle-icon pause-icon" aria-hidden="true">&#9646;&#9646;</span>
-        <span class="toggle-icon play-icon" aria-hidden="true" style="display:none;">&#9654;</span>
-      </button>
+      <!-- Pause / Play toggle removed to ensure unstoppable automatic sliding -->
 
       <!-- ---- SLIDES TRACK ---- -->
       <div
@@ -116,7 +114,7 @@
             <span class="slide-category">Mediterranean</span>
             <h2 class="slide-title">Santorini,<br /><em>Greece</em></h2>
             <p class="slide-description">Where whitewashed walls meet the infinite blue of the Aegean — a place that feels less like a destination and more like a dream.</p>
-            <a href="#collections" class="slide-cta" tabindex="0">Explore Collection</a>
+            <a href="collections.html#mediterranean" class="slide-cta" tabindex="0">Explore Collection</a>
           </div>
         </div>
 
@@ -135,7 +133,7 @@
             <span class="slide-category">South America</span>
             <h2 class="slide-title">Patagonia,<br /><em>Argentina</em></h2>
             <p class="slide-description">Raw, untamed, and breathtaking — the southernmost wilderness where glaciers meet ancient forests beneath skies that stretch forever.</p>
-            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+            <a href="collections.html#south-america" class="slide-cta" tabindex="-1">Explore Collection</a>
           </div>
         </div>
 
@@ -154,7 +152,7 @@
             <span class="slide-category">East Asia</span>
             <h2 class="slide-title">Zhangjiajie,<br /><em>China</em></h2>
             <p class="slide-description">Towering sandstone pillars shrouded in mist — the landscape that inspired the floating mountains of Avatar and humbles every visitor.</p>
-            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+            <a href="collections.html#asia" class="slide-cta" tabindex="-1">Explore Collection</a>
           </div>
         </div>
 
@@ -173,7 +171,7 @@
             <span class="slide-category">North Africa</span>
             <h2 class="slide-title">Sahara,<br /><em>Morocco</em></h2>
             <p class="slide-description">A sea of shifting dunes that swallows sound and returns silence. The Sahara at golden hour is one of Earth's most humbling spectacles.</p>
-            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+            <a href="collections.html#africa" class="slide-cta" tabindex="-1">Explore Collection</a>
           </div>
         </div>
 
@@ -192,7 +190,7 @@
             <span class="slide-category">North America</span>
             <h2 class="slide-title">Banff,<br /><em>Canada</em></h2>
             <p class="slide-description">Glacial lakes of impossible turquoise, towering Rockies, and forests that seem to belong to another century — Canada's crown jewel.</p>
-            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+            <a href="collections.html#north-america" class="slide-cta" tabindex="-1">Explore Collection</a>
           </div>
         </div>
 
@@ -211,7 +209,7 @@
             <span class="slide-category">Europe</span>
             <h2 class="slide-title">Amalfi Coast,<br /><em>Italy</em></h2>
             <p class="slide-description">Cliffside villages suspended between mountain and sea, where lemons grow wild and every sunset looks hand-painted by a master.</p>
-            <a href="#collections" class="slide-cta" tabindex="-1">Explore Collection</a>
+            <a href="collections.html#mediterranean" class="slide-cta" tabindex="-1">Explore Collection</a>
           </div>
         </div>
 
@@ -303,7 +301,7 @@
         <p class="section-sub">Six regions. Thousands of stories. One lens.</p>
       </div>
       <div class="collections-grid">
-        <div class="collection-card reveal-up" style="--delay:0s">
+        <a href="collections.html#mediterranean" class="collection-card reveal-up" style="--delay:0s; text-decoration: none; display: block;">
           <div class="collection-img">
             <img src="https://images.unsplash.com/photo-1469796466635-455ede028aca?w=600&q=80" alt="Mediterranean" loading="lazy" />
           </div>
@@ -311,8 +309,8 @@
             <h3>Mediterranean</h3>
             <span>14 Destinations</span>
           </div>
-        </div>
-        <div class="collection-card reveal-up" style="--delay:0.1s">
+        </a>
+        <a href="collections.html#south-america" class="collection-card reveal-up" style="--delay:0.1s; text-decoration: none; display: block;">
           <div class="collection-img">
             <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="South America" loading="lazy" />
           </div>
@@ -320,8 +318,8 @@
             <h3>South America</h3>
             <span>11 Destinations</span>
           </div>
-        </div>
-        <div class="collection-card reveal-up" style="--delay:0.2s">
+        </a>
+        <a href="collections.html#north-america" class="collection-card reveal-up" style="--delay:0.2s; text-decoration: none; display: block;">
           <div class="collection-img">
             <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="North America" loading="lazy" />
           </div>
@@ -329,8 +327,8 @@
             <h3>North America</h3>
             <span>18 Destinations</span>
           </div>
-        </div>
-        <div class="collection-card reveal-up" style="--delay:0.3s">
+        </a>
+        <a href="collections.html#africa" class="collection-card reveal-up" style="--delay:0.3s; text-decoration: none; display: block;">
           <div class="collection-img">
             <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80" alt="Africa" loading="lazy" />
           </div>
@@ -338,7 +336,219 @@
             <h3>Africa</h3>
             <span>9 Destinations</span>
           </div>
+        </a>
+        <a href="collections.html#asia" class="collection-card reveal-up" style="--delay:0.4s; text-decoration: none; display: block;">
+          <div class="collection-img">
+            <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80" alt="Asia" loading="lazy" />
+          </div>
+          <div class="collection-info">
+            <h3>Asia</h3>
+            <span>15 Destinations</span>
+          </div>
+        </a>
+        <a href="collections.html#oceania" class="collection-card reveal-up" style="--delay:0.5s; text-decoration: none; display: block;">
+          <div class="collection-img">
+            <img src="https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?w=600&q=80" alt="Oceania" loading="lazy" />
+          </div>
+          <div class="collection-info">
+            <h3>Oceania</h3>
+            <span>8 Destinations</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MOTION GALLERY (Cinematic People & Culture)
+  ============================================================ -->
+  <section class="motion-section section" id="motion" style="background: var(--clr-base); border-top: 1px solid var(--clr-border); padding-bottom: 6rem;">
+    <div class="container reveal">
+      <div class="section-header text-center" style="margin-bottom: 4rem;">
+        <span class="section-tag">Cinematic Motion</span>
+        <h2 class="section-title">The Human Element</h2>
+        <p style="color: var(--clr-text-muted); max-width: 600px; margin: 1rem auto 0;">Experience the vibrant pulse of cultures and the poetry of motion captured across our lens.</p>
+      </div>
+
+      <div class="motion-grid">
+        <div class="motion-card overlay-dark reveal-up" style="--delay: 0s;">
+          <video autoplay loop muted playsinline class="motion-vid" poster="https://picsum.photos/seed/culture/600/900">
+             <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
+          </video>
+          <div class="motion-info">
+            <h3 style="color:white; font-family: var(--ff-display); font-size: 1.8rem; margin-bottom:0.2rem;">Wanderlust</h3>
+            <span style="color: var(--clr-gold); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;">Global Expedition</span>
+          </div>
         </div>
+
+        <div class="motion-card overlay-dark reveal-up" style="--delay: 0.15s;">
+          <video autoplay loop muted playsinline class="motion-vid" poster="https://picsum.photos/seed/ocean/600/900">
+             <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+          </video>
+          <div class="motion-info">
+            <h3 style="color:white; font-family: var(--ff-display); font-size: 1.8rem; margin-bottom:0.2rem;">Fluidity</h3>
+            <span style="color: var(--clr-gold); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;">Nature's Rhythm</span>
+          </div>
+        </div>
+
+        <div class="motion-card overlay-dark reveal-up" style="--delay: 0.3s;">
+          <video autoplay loop muted playsinline class="motion-vid" poster="https://picsum.photos/seed/mountains/600/900">
+             <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
+          </video>
+          <div class="motion-info">
+            <h3 style="color:white; font-family: var(--ff-display); font-size: 1.8rem; margin-bottom:0.2rem;">Serenity</h3>
+            <span style="color: var(--clr-gold); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;">Quiet Moments</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STORIES & PERSPECTIVES (Testimonials & Quote API)
+  ============================================================ -->
+  <section class="testimonials-section section" id="stories" style="background: var(--clr-surface-2); border-top: 1px solid var(--clr-border);">
+    <div class="container reveal">
+      <div class="section-header text-center" style="margin-bottom: 3rem;">
+        <span class="section-tag">Perspectives</span>
+        <h2 class="section-title">Traveler Stories</h2>
+      </div>
+      
+      <div class="stories-marquee-wrapper">
+        <div class="stories-track">
+          <!-- STORY 1 -->
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"LensVista completely transformed how I see the world. The curated destinations helped me plan the perfect visual journey through Patagonia."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="David Chen" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">David Chen</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Travel Photographer</div>
+              </div>
+            </div>
+          </div>
+          <!-- STORY 2 -->
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"Every photograph tells a breathtaking narrative. My last trip to Santorini was inspired directly by the curated gallery here."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Elena Rostova" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Elena Rostova</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Digital Nomad</div>
+              </div>
+            </div>
+          </div>
+          <!-- STORY 3 -->
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"The quiet beauty of Kyoto was captured perfectly. LensVista is my go-to for finding authentic, uncrowded spots in East Asia."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Kenji Ito" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Kenji Ito</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Architect</div>
+              </div>
+            </div>
+          </div>
+          <!-- STORY 4 -->
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"I found the inspiration for my African safari on this very platform. An absolute visual goldmine for global explorers."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="Amina Diallo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Amina Diallo</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Explorer</div>
+              </div>
+            </div>
+          </div>
+          <!-- STORY 5 -->
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"As a landscape painter, LensVista's high-fidelity curation of Banff gives me constant reference material without leaving my studio."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Sarah Jenkins" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Sarah Jenkins</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Visual Artist</div>
+              </div>
+            </div>
+          </div>
+          <!-- API QUOTE -->
+          <div class="story-card" style="background: rgba(232,184,109,0.05); border: 1px solid rgba(232,184,109,0.2); display: flex; flex-direction: column; justify-content: center;">
+            <div style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--clr-gold); margin-bottom: 1rem;">LensVista API Inspire</div>
+            <p class="api-quote-text" style="font-family: var(--ff-display); font-size: 1.6rem; line-height: 1.3; color: var(--clr-white); margin-bottom: 1rem;">Loading inspiration...</p>
+            <div class="api-quote-author" style="font-family: var(--ff-ui); font-size: 0.85rem; color: var(--clr-text-muted);"></div>
+          </div>
+
+          <!-- ================= DUPLICATE SET FOR INFINITE CSS SCROLL LOOP ================= -->
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"LensVista completely transformed how I see the world. The curated destinations helped me plan the perfect visual journey through Patagonia."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="David Chen" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">David Chen</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Travel Photographer</div>
+              </div>
+            </div>
+          </div>
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"Every photograph tells a breathtaking narrative. My last trip to Santorini was inspired directly by the curated gallery here."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Elena Rostova" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Elena Rostova</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Digital Nomad</div>
+              </div>
+            </div>
+          </div>
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"The quiet beauty of Kyoto was captured perfectly. LensVista is my go-to for finding authentic, uncrowded spots in East Asia."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Kenji Ito" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Kenji Ito</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Architect</div>
+              </div>
+            </div>
+          </div>
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"I found the inspiration for my African safari on this very platform. An absolute visual goldmine for global explorers."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="Amina Diallo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Amina Diallo</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Explorer</div>
+              </div>
+            </div>
+          </div>
+          <div class="story-card">
+            <div style="color: var(--clr-gold); font-size: 1.5rem; margin-bottom: 1rem;">&#10077;</div>
+            <p style="color: var(--clr-text-muted); font-style: italic; margin-bottom: 1.5rem;">"As a landscape painter, LensVista's high-fidelity curation of Banff gives me constant reference material without leaving my studio."</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Sarah Jenkins" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+              <div>
+                <div style="font-family: var(--ff-ui); font-size: 0.9rem; font-weight: 500;">Sarah Jenkins</div>
+                <div style="font-family: var(--ff-ui); font-size: 0.75rem; color: var(--clr-text-faint);">Visual Artist</div>
+              </div>
+            </div>
+          </div>
+          <div class="story-card" style="background: rgba(232,184,109,0.05); border: 1px solid rgba(232,184,109,0.2); display: flex; flex-direction: column; justify-content: center;">
+            <div style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--clr-gold); margin-bottom: 1rem;">LensVista API Inspire</div>
+            <p class="api-quote-text" style="font-family: var(--ff-display); font-size: 1.6rem; line-height: 1.3; color: var(--clr-white); margin-bottom: 1rem;">Loading inspiration...</p>
+            <div class="api-quote-author" style="font-family: var(--ff-ui); font-size: 0.85rem; color: var(--clr-text-muted);"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="mailto:teklinitechnologies@gmail.com?subject=My LensVista Story" class="btn-subscribe" style="padding: 12px 28px; font-size: 0.9rem; letter-spacing: 0.05em; text-decoration: none; display: inline-block;">Share Your Story</a>
       </div>
     </div>
   </section>
@@ -356,15 +566,15 @@
       </div>
       <div class="about-stats">
         <div class="stat-item">
-          <span class="stat-n">42</span>
+          <span class="stat-n"><span class="counter" data-target="42">0</span></span>
           <span class="stat-l">Countries</span>
         </div>
         <div class="stat-item">
-          <span class="stat-n">6K+</span>
+          <span class="stat-n"><span class="counter" data-target="6">0</span>K+</span>
           <span class="stat-l">Photographs</span>
         </div>
         <div class="stat-item">
-          <span class="stat-n">180+</span>
+          <span class="stat-n"><span class="counter" data-target="180">0</span>+</span>
           <span class="stat-l">Photographers</span>
         </div>
       </div>
@@ -374,16 +584,31 @@
   <!-- ============================================================
        CONTACT SECTION
   ============================================================ -->
-  <section class="contact-section section" id="contact">
-    <div class="container contact-inner reveal">
-      <span class="section-tag">Stay Connected</span>
-      <h2 class="section-title">Never Miss a Frame.</h2>
-      <p class="contact-sub">Subscribe to receive curated photography collections, travel stories, and behind-the-lens insights delivered monthly.</p>
-      <div class="subscribe-form">
-        <input type="email" id="emailInput" placeholder="Your email address" aria-label="Email address for newsletter" />
-        <button class="btn-subscribe" id="subscribeBtn" type="button">Subscribe</button>
+  <section class="signup-section section" id="contact">
+    <div class="container signup-inner reveal">
+      <div class="signup-content">
+        <span class="section-tag">Connect With Us</span>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-description">
+          Whether you want to share your travel story, inquire about prints, or receive exclusive editorial features, we'd love to hear from you.
+        </p>
+        <form class="signup-form" id="subscribeForm" novalidate>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <input type="text" id="nameInput" class="form-input" placeholder="Your Name" />
+          </div>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <input type="email" id="emailInput" class="form-input" placeholder="Enter your email address" required />
+            <span class="form-error" id="emailError" aria-live="polite"></span>
+          </div>
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <textarea id="messageInput" class="form-input" placeholder="Your message (optional)" rows="3" style="resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-subscribe">Send Message</button>
+        </form>
+        <p class="form-success" id="formSuccess" aria-live="polite" style="display: none;">
+          Thank you for reaching out. We will connect with you soon!
+        </p>
       </div>
-      <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
     </div>
   </section>
 
@@ -396,8 +621,8 @@
       <h2 class="section-title">Build Custom Software</h2>
       <p style="margin-bottom: 24px; color: var(--text-muted);">Need a robust web app, enterprise system, or custom software? Reach out to Teklini Technologies.</p>
       <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a href="mailto:teklinitechnologies@gmail.com" class="slide-cta" style="border: 1px solid var(--accent); color: var(--accent);">teklinitechnologies@gmail.com</a>
-        <a href="tel:+254791832015" class="slide-cta" style="border: 1px solid var(--accent); color: var(--accent);">Call: +254 791832015</a>
+        <a href="mailto:teklinitechnologies@gmail.com" class="btn-subscribe" style="background: transparent; border: 1px solid var(--clr-gold); color: var(--clr-gold);">teklinitechnologies@gmail.com</a>
+        <a href="tel:+254791832015" class="btn-subscribe" style="background: transparent; border: 1px solid var(--clr-gold); color: var(--clr-gold);">Call: +254 791832015</a>
       </div>
     </div>
   </section>
@@ -419,11 +644,12 @@
         <a href="#collections">Collections</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
       </div>
       <p class="footer-copy">
         &copy; 2025 LensVista. Photography &copy; respective photographers via
-        <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.
-        Built with HTML5, CSS3 &amp; Vanilla JavaScript.<br/>
+        <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.<br/>
         CipherForge — Passwords generated entirely in your browser.<br/>
         Owned by <strong>Teklini Technologies</strong>.
       </p>
